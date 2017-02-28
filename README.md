@@ -1,3 +1,10 @@
-# Getting started with Play (Scala)
+# Vessel Management Tool
 
-This project demonstrate how to create a simple CRUD application with Play.
+Technologies:
+- Activator
+- Play
+- Slick
+- Angular 2
+
+How to run:
+- ./activator ui
