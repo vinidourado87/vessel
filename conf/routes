@@ -1,0 +1,7 @@
+# Routes
+
+# Home page
+POST    /person                     controllers.PersonController.addPerson
+GET     /persons                    controllers.PersonController.getPersons
+
+GET     /                          controllers.PersonController.index
