@@ -1,7 +1,12 @@
 # Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /                          controllers.PersonController.index
 
 # Home page
 POST    /person                     controllers.PersonController.addPerson
 GET     /persons                    controllers.PersonController.getPersons
 
-GET     /                          controllers.PersonController.index
+# Map static resources from the /public folder to the /assets URL path
+GET     /*file               controllers.Assets.versioned(path="/public", file: Asset)
