@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { CadastroComponent }  from './cadastro/cadastro.component';
 import { EditComponent }  from './edit/edit.component';
-import { ListagemComponent }  from './listagem/listagem.component';
+import { ListComponent }  from './list/list.component';
 import { FotoModule }  from './foto/foto.module';
 import { PainelModule }  from './painel/painel.module';
 import { VesselModule }  from './vessel/vessel.module';
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 @NgModule({
  imports:[ BrowserModule, FotoModule, HttpModule, PainelModule, VesselModule, routing, FormsModule,
     ReactiveFormsModule ],
- declarations: [ AppComponent, CadastroComponent, EditComponent, ListagemComponent ],
+ declarations: [ AppComponent, CadastroComponent, EditComponent, ListComponent ],
  bootstrap: [ AppComponent ]
 })
 

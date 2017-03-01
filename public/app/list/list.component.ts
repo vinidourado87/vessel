@@ -3,11 +3,11 @@ import { Http } from '@angular/http';
 
 @Component({
     moduleId: module.id,
-    selector: 'listagem',
-    templateUrl: './listagem.component.html'
+    selector: 'list',
+    templateUrl: './list.component.html'
 })
 
-export class ListagemComponent{
+export class ListComponent{
     vessels: Object[] = [];
 
     constructor(http: Http) {
@@ -19,4 +19,5 @@ export class ListagemComponent{
             console.log(this.vessels);
         }, erro => console.log(erro));
     }
+
 }
