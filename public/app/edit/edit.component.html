@@ -1,0 +1,28 @@
+<div class="container">
+
+    <form [formGroup]="myForm" class="row" (submit)="cadastrar($event)">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Name</label>
+                <input formControlName="name" name="name"
+                    [(ngModel)]="vessel.name" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.name.invalid">
+                    <span *ngIf="myForm.controls.name.errors.required" class="form-control alert-danger">
+                        Name required
+                    </span>
+                    <span *ngIf="myForm.controls.name.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
+                Save
+            </button>
+             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
+            <hr>
+        </div>
+    </form>
+</div>
