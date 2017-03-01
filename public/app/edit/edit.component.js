@@ -25,12 +25,20 @@ var EditComponent = (function () {
             longitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])]
         });
     }
-    EditComponent.prototype.cadastrar = function (event) {
+    EditComponent.prototype.addVessel = function (event) {
         var _this = this;
         event.preventDefault();
         var head = new http_1.Headers();
         head.append('Content-type', 'application/json');
-        this.http.post('vessel', JSON.stringify(this.vessel), { headers: head })
+        var data = JSON.stringify({
+            name: this.vessel.name,
+            width: parseFloat(this.vessel.width.toString()),
+            length: parseFloat(this.vessel.length.toString()),
+            draft: parseFloat(this.vessel.draft.toString()),
+            latitude: this.vessel.latitude,
+            longitude: this.vessel.longitude
+        });
+        this.http.post('vessel', data, { headers: head })
             .subscribe(function () {
             _this.vessel = new vessel_component_1.VesselComponent();
         }, function (erro) { return console.log(erro); });

@@ -26,13 +26,22 @@ export class EditComponent {
         });
     }
 
-    cadastrar(event) {
+    addVessel(event) {
         event.preventDefault();
 
         let head = new Headers();
         head.append('Content-type', 'application/json');
 
-        this.http.post('vessel', JSON.stringify(this.vessel), {headers: head})
+        var data = JSON.stringify({
+            name: this.vessel.name,
+            width: parseFloat(this.vessel.width.toString()),
+            length: parseFloat(this.vessel.length.toString()),
+            draft: parseFloat(this.vessel.draft.toString()),
+            latitude: this.vessel.latitude,
+            longitude: this.vessel.longitude
+        });
+
+        this.http.post('vessel', data, {headers: head})
         .subscribe(() => {
             this.vessel = new VesselComponent();
         }, erro => console.log(erro));

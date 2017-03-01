@@ -8,9 +8,9 @@ import {Component, Input} from '@angular/core';
 export class VesselComponent {
 
     @Input() name: string;
-    @Input() width: number = 0;
-    @Input() length: number = 0;
-    @Input() draft: number = 0;
+    @Input() width: number;
+    @Input() length: number;
+    @Input() draft: number;
     @Input() latitude: string;
     @Input() longitude: string;
 

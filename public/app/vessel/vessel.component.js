@@ -11,9 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var VesselComponent = (function () {
     function VesselComponent() {
-        this.width = 0;
-        this.length = 0;
-        this.draft = 0;
     }
     __decorate([
         core_1.Input(), 
