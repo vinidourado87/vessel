@@ -17,7 +17,12 @@ export class EditComponent {
     constructor(http: Http, formBuilder: FormBuilder) {
         this.http = http;
         this.myForm = formBuilder.group({
-            name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ]
+            name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
+            width: [ '', Validators.compose([Validators.required]) ],
+            length: [ '', Validators.compose([Validators.required]) ],
+            draft: [ '', Validators.compose([Validators.required]) ],
+            latitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
+            longitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ]
         });
     }
 
@@ -27,7 +32,7 @@ export class EditComponent {
         let head = new Headers();
         head.append('Content-type', 'application/json');
 
-        this.http.post('person', JSON.stringify(this.vessel), {headers: head})
+        this.http.post('vessel', JSON.stringify(this.vessel), {headers: head})
         .subscribe(() => {
             this.vessel = new VesselComponent();
         }, erro => console.log(erro));

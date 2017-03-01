@@ -15,7 +15,7 @@ var ListComponent = (function () {
         var _this = this;
         this.vessels = [];
         http
-            .get('persons')
+            .get('vessels')
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;

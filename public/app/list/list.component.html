@@ -21,7 +21,7 @@
 
     <div class="row">
         <painel *ngFor="let vessel of vessels | filterByName: text.value" titulo="{{vessel.name | uppercase}}" class="col-md-2">
-            <vessel name="{{vessel.name}}"></vessel>
+            <vessel name="{{vessel.name}}" latitude="{{vessel.latitude}}" longitude="{{vessel.longitude}}"></vessel>
         </painel>
     </div>
 </div>
