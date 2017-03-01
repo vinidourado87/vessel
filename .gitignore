@@ -1,6 +1,7 @@
 logs
 target
 project
+*.map
 /.idea
 /.idea_modules
 /.classpath
