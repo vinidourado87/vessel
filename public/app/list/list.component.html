@@ -1,0 +1,27 @@
+<div class="jumbotron">
+    <h1 class="text-center">Vessel Management Tool</h1>
+</div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                 <div class="input-group">
+                    <span class="input-group-btn">
+                        <a [routerLink]="['/vessel']" class="btn btn-primary">
+                            New vessel
+                        </a>
+                    </span>
+                    <input #text (keyup)="0" class="form-control" placeholder="filter by name">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <painel *ngFor="let vessel of vessels | filterByName: text.value" titulo="{{vessel.name | uppercase}}" class="col-md-2">
+            <vessel name="{{vessel.name}}"></vessel>
+        </painel>
+    </div>
+</div>

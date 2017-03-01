@@ -8,3 +8,5 @@ Technologies:
 
 How to run:
 - ./activator ui
+
+- cd public && npm start
