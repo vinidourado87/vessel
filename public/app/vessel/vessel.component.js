@@ -11,7 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var VesselComponent = (function () {
     function VesselComponent() {
-        this.age = 15;
+        this.width = 0;
+        this.length = 0;
+        this.draft = 0;
     }
     __decorate([
         core_1.Input(), 
@@ -20,7 +22,23 @@ var VesselComponent = (function () {
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Number)
-    ], VesselComponent.prototype, "age", void 0);
+    ], VesselComponent.prototype, "width", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], VesselComponent.prototype, "length", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], VesselComponent.prototype, "draft", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], VesselComponent.prototype, "latitude", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], VesselComponent.prototype, "longitude", void 0);
     VesselComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

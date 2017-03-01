@@ -9,26 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var FotoComponent = (function () {
-    function FotoComponent() {
+var PanelComponent = (function () {
+    function PanelComponent() {
     }
+    PanelComponent.prototype.ngOnInit = function () {
+        this.titulo = this.titulo.length > 7 ? this.titulo.substr(0, 7) + "..." : this.titulo;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], FotoComponent.prototype, "url", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], FotoComponent.prototype, "titulo", void 0);
-    FotoComponent = __decorate([
+    ], PanelComponent.prototype, "titulo", void 0);
+    PanelComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'foto',
-            templateUrl: './foto.component.html'
+            selector: 'panel',
+            templateUrl: './panel.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], FotoComponent);
-    return FotoComponent;
+    ], PanelComponent);
+    return PanelComponent;
 }());
-exports.FotoComponent = FotoComponent;
-//# sourceMappingURL=foto.component.js.map
+exports.PanelComponent = PanelComponent;
+//# sourceMappingURL=panel.component.js.map

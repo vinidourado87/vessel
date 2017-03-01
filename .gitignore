@@ -1,6 +1,7 @@
 logs
 target
 project
+.cache-tests
 /.idea
 /.idea_modules
 /.classpath

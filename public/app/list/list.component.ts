@@ -12,7 +12,7 @@ export class ListComponent{
 
     constructor(http: Http) {
         http
-        .get('persons')
+        .get('vessels')
         .map(res => res.json())
         .subscribe(vessels => {
             this.vessels = vessels;

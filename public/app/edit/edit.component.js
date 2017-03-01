@@ -17,7 +17,12 @@ var EditComponent = (function () {
         this.vessel = new vessel_component_1.VesselComponent();
         this.http = http;
         this.myForm = formBuilder.group({
-            name: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])]
+            name: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
+            width: ['', forms_1.Validators.compose([forms_1.Validators.required])],
+            length: ['', forms_1.Validators.compose([forms_1.Validators.required])],
+            draft: ['', forms_1.Validators.compose([forms_1.Validators.required])],
+            latitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
+            longitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])]
         });
     }
     EditComponent.prototype.cadastrar = function (event) {
@@ -25,7 +30,7 @@ var EditComponent = (function () {
         event.preventDefault();
         var head = new http_1.Headers();
         head.append('Content-type', 'application/json');
-        this.http.post('person', JSON.stringify(this.vessel), { headers: head })
+        this.http.post('vessel', JSON.stringify(this.vessel), { headers: head })
             .subscribe(function () {
             _this.vessel = new vessel_component_1.VesselComponent();
         }, function (erro) { return console.log(erro); });

@@ -9,25 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var PainelComponent = (function () {
-    function PainelComponent() {
+var panel_component_1 = require('./panel.component');
+var PanelModule = (function () {
+    function PanelModule() {
     }
-    PainelComponent.prototype.ngOnInit = function () {
-        this.titulo = this.titulo.length > 7 ? this.titulo.substr(0, 7) + "..." : this.titulo;
-    };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PainelComponent.prototype, "titulo", void 0);
-    PainelComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'painel',
-            templateUrl: './painel.component.html'
+    PanelModule = __decorate([
+        core_1.NgModule({
+            declarations: [panel_component_1.PanelComponent],
+            exports: [panel_component_1.PanelComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], PainelComponent);
-    return PainelComponent;
+    ], PanelModule);
+    return PanelModule;
 }());
-exports.PainelComponent = PainelComponent;
-//# sourceMappingURL=painel.component.js.map
+exports.PanelModule = PanelModule;
+//# sourceMappingURL=panel.module.js.map

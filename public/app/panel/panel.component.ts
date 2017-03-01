@@ -2,11 +2,11 @@ import { Component, Input, OnInit} from '@angular/core'
 
 @Component({
     moduleId: module.id,
-    selector: 'painel',
-    templateUrl: './painel.component.html'
+    selector: 'panel',
+    templateUrl: './panel.component.html'
 })
 
-export class PainelComponent implements OnInit {
+export class PanelComponent implements OnInit {
 
     @Input() titulo: string;
 

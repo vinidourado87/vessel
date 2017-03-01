@@ -8,6 +8,10 @@ import {Component, Input} from '@angular/core';
 export class VesselComponent {
 
     @Input() name: string;
-    @Input() age: number = 15;
+    @Input() width: number = 0;
+    @Input() length: number = 0;
+    @Input() draft: number = 0;
+    @Input() latitude: string;
+    @Input() longitude: string;
 
 }

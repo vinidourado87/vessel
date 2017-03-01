@@ -18,6 +18,81 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label>Width</label>
+                <input formControlName="width" name="width"
+                    [(ngModel)]="vessel.width" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.width.invalid">
+                    <span *ngIf="myForm.controls.width.errors.required" class="form-control alert-danger">
+                        Width required
+                    </span>
+                    <span *ngIf="myForm.controls.width.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Length</label>
+                <input formControlName="length" name="length"
+                    [(ngModel)]="vessel.length" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.length.invalid">
+                    <span *ngIf="myForm.controls.length.errors.required" class="form-control alert-danger">
+                        length required
+                    </span>
+                    <span *ngIf="myForm.controls.length.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Draft</label>
+                <input formControlName="draft" name="draft"
+                    [(ngModel)]="vessel.draft" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.draft.invalid">
+                    <span *ngIf="myForm.controls.draft.errors.required" class="form-control alert-danger">
+                        Draft required
+                    </span>
+                    <span *ngIf="myForm.controls.draft.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Latitude</label>
+                <input formControlName="latitude" name="latitude"
+                    [(ngModel)]="vessel.latitude" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.latitude.invalid">
+                    <span *ngIf="myForm.controls.latitude.errors.required" class="form-control alert-danger">
+                        Latitude required
+                    </span>
+                    <span *ngIf="myForm.controls.latitude.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Longitude</label>
+                <input formControlName="longitude" name="longitude"
+                    [(ngModel)]="vessel.longitude" class="form-control"  autocomplete="off">
+
+                <div *ngIf="myForm.controls.longitude.invalid">
+                    <span *ngIf="myForm.controls.longitude.errors.required" class="form-control alert-danger">
+                        Longitude required
+                    </span>
+                    <span *ngIf="myForm.controls.longitude.errors.minlength" class="form-control alert-danger">
+                        4 caracteres
+                    </span>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
                 Save
             </button>
