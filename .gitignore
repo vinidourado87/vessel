@@ -1,8 +1,6 @@
 logs
 target
 project
-/**/*.map
-/public/node_modules
 /.idea
 /.idea_modules
 /.classpath
