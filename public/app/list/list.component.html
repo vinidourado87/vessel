@@ -20,8 +20,8 @@
     <br>
 
     <div class="row">
-        <painel *ngFor="let vessel of vessels | filterByName: text.value" titulo="{{vessel.name | uppercase}}" class="col-md-2">
+        <panel *ngFor="let vessel of vessels | filterByName: text.value" titulo="{{vessel.name | uppercase}}" class="col-md-2">
             <vessel name="{{vessel.name}}" latitude="{{vessel.latitude}}" longitude="{{vessel.longitude}}"></vessel>
-        </painel>
+        </panel>
     </div>
 </div>

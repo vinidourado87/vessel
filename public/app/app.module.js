@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
-var cadastro_component_1 = require('./cadastro/cadastro.component');
 var edit_component_1 = require('./edit/edit.component');
 var list_component_1 = require('./list/list.component');
-var foto_module_1 = require('./foto/foto.module');
-var painel_module_1 = require('./painel/painel.module');
+var panel_module_1 = require('./panel/panel.module');
 var vessel_module_1 = require('./vessel/vessel.module');
 var http_1 = require('@angular/http');
 var app_routes_1 = require('./app.routes');
@@ -26,9 +24,9 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, foto_module_1.FotoModule, http_1.HttpModule, painel_module_1.PainelModule, vessel_module_1.VesselModule, app_routes_1.routing, forms_1.FormsModule,
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, panel_module_1.PanelModule, vessel_module_1.VesselModule, app_routes_1.routing, forms_1.FormsModule,
                 forms_1.ReactiveFormsModule],
-            declarations: [app_component_1.AppComponent, cadastro_component_1.CadastroComponent, edit_component_1.EditComponent, list_component_1.ListComponent],
+            declarations: [app_component_1.AppComponent, edit_component_1.EditComponent, list_component_1.ListComponent],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
