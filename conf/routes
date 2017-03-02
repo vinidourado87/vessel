@@ -1,13 +1,16 @@
 # Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
 
+#index
 GET     /                           controllers.HomeController.index
 
-POST    /vessel                     controllers.VesselController.saveOrUpdate
-GET     /vessels                    controllers.VesselController.list
-DELETE  /vessel/:id                 controllers.VesselController.delete(id: Long)
-GET     /vessel/:id                 controllers.VesselController.find(id: Long)
+
+#All actions with vessels
+POST    /vessel                                                   controllers.VesselController.saveOrUpdate
+GET     /vessels                                                  controllers.VesselController.list
+DELETE  /vessel/:id                                               controllers.VesselController.delete(id: Long)
+GET     /vessel/:id                                               controllers.VesselController.find(id: Long)
+PUT     /vessel/:id/latitude/:latitude/longitude/:longitude       controllers.VesselController.relocate(id: Long, latitude: String, longitude: String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               controllers.Assets.versioned(path="/public", file: Asset)
