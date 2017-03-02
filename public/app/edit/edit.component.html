@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label>Width</label>
-                <input formControlName="width" name="width"
+                <input formControlName="width" name="width" type="number"
                     [(ngModel)]="vessel.width" class="form-control"  autocomplete="off">
 
                 <div *ngIf="myForm.controls.width.invalid">
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label>Length</label>
-                <input formControlName="length" name="length"
+                <input formControlName="length" name="length" type="number"
                     [(ngModel)]="vessel.length" class="form-control"  autocomplete="off">
 
                 <div *ngIf="myForm.controls.length.invalid">
@@ -50,7 +50,7 @@
 
             <div class="form-group">
                 <label>Draft</label>
-                <input formControlName="draft" name="draft"
+                <input formControlName="draft" name="draft" type="number"
                     [(ngModel)]="vessel.draft" class="form-control"  autocomplete="off">
 
                 <div *ngIf="myForm.controls.draft.invalid">

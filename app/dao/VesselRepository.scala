@@ -42,6 +42,16 @@ class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     vessel.result
   }
 
+  def relocate(id: Long, newLatitude: String, newLongitude: String) {
+    val query = vessel.filter(_.id === id).map(v => (v.latitude, v.longitude)).update((newLatitude, newLongitude))
+    db.run(query)
+  }
+
+  def find(id: Long) = {
+    val query = vessel.filter(_.id === id).result.headOption
+    db.run(query)
+  }
+
   def delete(id: Long) {
     val query = vessel.filter(_.id === id)
     db.run(query.delete)

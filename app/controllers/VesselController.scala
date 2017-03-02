@@ -35,6 +35,12 @@ class VesselController @Inject()(repo: VesselRepository, val messagesApi: Messag
     }
   }
 
+  def find(id: Long) = Action.async {
+    repo.find(id).map { vessel =>
+      Ok(Json.toJson(vessel))
+    }
+  }
+
   def delete(id: Long) = Action.async {
     repo.delete(id)
     repo.list().map { vessel =>
