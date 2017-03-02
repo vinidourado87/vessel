@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { VesselComponent } from '../vessel/vessel.component';
 import { Http, Headers } from '@angular/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -13,8 +14,9 @@ export class EditComponent {
     vessel: VesselComponent = new VesselComponent();
     http: Http;
     myForm: FormGroup;
+    router : Router;
 
-    constructor(http: Http, formBuilder: FormBuilder) {
+    constructor(http: Http, formBuilder: FormBuilder, router : Router) {
         this.http = http;
         this.myForm = formBuilder.group({
             name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
@@ -24,6 +26,7 @@ export class EditComponent {
             latitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
             longitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ]
         });
+        this.router = router;
     }
 
     addVessel(event) {
@@ -44,6 +47,7 @@ export class EditComponent {
         this.http.post('vessel', data, {headers: head})
         .subscribe(() => {
             this.vessel = new VesselComponent();
+            this.router.navigate(['']);
         }, erro => console.log(erro));
     }
 }

@@ -19,7 +19,6 @@ var ListComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;
-            console.log(_this.vessels);
         }, function (erro) { return console.log(erro); });
     }
     ListComponent = __decorate([

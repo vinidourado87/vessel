@@ -13,12 +13,8 @@ import scala.concurrent.ExecutionContext
 
 class VesselController @Inject()(repo: VesselRepository, val messagesApi: MessagesApi)
                                 (implicit ec: ExecutionContext) extends Controller with I18nSupport {
-  
-  def index() = Action {
-    Redirect("/index.html")
-  }
-  
-  def addVessel = Action.async(parse.json) { request =>
+
+  def saveOrUpdate = Action.async(parse.json) { request =>
     scala.concurrent.Future {
       val vesselResult = request.body.validate[Vessel]
       vesselResult.fold(
@@ -33,7 +29,14 @@ class VesselController @Inject()(repo: VesselRepository, val messagesApi: Messag
     }
   }
 
-  def getVessels = Action.async {
+  def list = Action.async {
+    repo.list().map { vessel =>
+      Ok(Json.toJson(vessel))
+    }
+  }
+
+  def delete(id: Long) = Action.async {
+    repo.delete(id)
     repo.list().map { vessel =>
       Ok(Json.toJson(vessel))
     }

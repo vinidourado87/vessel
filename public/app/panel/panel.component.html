@@ -1,6 +1,11 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title text-center">{{titulo}}</h3>
+         <h3 class="panel-title pull-left">{{title}}</h3>
+         <form (submit)="deleteVessel($event)">
+             <input type="hidden" formControlName="id" name="id" value="{{id}}" />
+             <button class="btn btn-danger pull-right" title="Delete">X</button>
+         </form>
+        <div class="clearfix"></div>
     </div>
     <div class="panel-body">
         <ng-content></ng-content>

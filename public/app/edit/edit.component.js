@@ -12,8 +12,9 @@ var core_1 = require('@angular/core');
 var vessel_component_1 = require('../vessel/vessel.component');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var EditComponent = (function () {
-    function EditComponent(http, formBuilder) {
+    function EditComponent(http, formBuilder, router) {
         this.vessel = new vessel_component_1.VesselComponent();
         this.http = http;
         this.myForm = formBuilder.group({
@@ -24,6 +25,7 @@ var EditComponent = (function () {
             latitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
             longitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])]
         });
+        this.router = router;
     }
     EditComponent.prototype.addVessel = function (event) {
         var _this = this;
@@ -41,6 +43,7 @@ var EditComponent = (function () {
         this.http.post('vessel', data, { headers: head })
             .subscribe(function () {
             _this.vessel = new vessel_component_1.VesselComponent();
+            _this.router.navigate(['']);
         }, function (erro) { return console.log(erro); });
     };
     EditComponent = __decorate([
@@ -49,7 +52,7 @@ var EditComponent = (function () {
             selector: 'cadastro',
             templateUrl: './edit.component.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http, forms_1.FormBuilder])
+        __metadata('design:paramtypes', [http_1.Http, forms_1.FormBuilder, router_1.Router])
     ], EditComponent);
     return EditComponent;
 }());

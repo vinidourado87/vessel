@@ -41,4 +41,9 @@ class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   def list(): Future[Seq[Vessel]] = db.run {
     vessel.result
   }
+
+  def delete(id: Long) {
+    val query = vessel.filter(_.id === id)
+    db.run(query.delete)
+  }
 }

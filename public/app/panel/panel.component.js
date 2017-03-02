@@ -9,23 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var PanelComponent = (function () {
-    function PanelComponent() {
+    function PanelComponent(http, formBuilder, router) {
+        this.http = http;
+        this.myForm = formBuilder.group({
+            id: ['', forms_1.Validators.compose([forms_1.Validators.required])]
+        });
+        this.router = router;
     }
     PanelComponent.prototype.ngOnInit = function () {
-        this.titulo = this.titulo.length > 7 ? this.titulo.substr(0, 7) + "..." : this.titulo;
+        this.title = this.title.length > 10 ? this.title.substr(0, 10) + "..." : this.title;
+    };
+    PanelComponent.prototype.deleteVessel = function (event) {
+        var _this = this;
+        event.preventDefault();
+        var head = new http_1.Headers();
+        head.append('Content-type', 'application/json');
+        this.http.delete('vessel/' + this.id, { headers: head })
+            .subscribe(function () {
+            _this.router.navigate(['/index.html']);
+        }, function (erro) { return console.log(erro); });
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
-    ], PanelComponent.prototype, "titulo", void 0);
+    ], PanelComponent.prototype, "title", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], PanelComponent.prototype, "id", void 0);
     PanelComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'panel',
             templateUrl: './panel.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http, forms_1.FormBuilder, router_1.Router])
     ], PanelComponent);
     return PanelComponent;
 }());

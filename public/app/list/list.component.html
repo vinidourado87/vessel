@@ -20,7 +20,7 @@
     <br>
 
     <div class="row">
-        <panel *ngFor="let vessel of vessels | filterByName: text.value" titulo="{{vessel.name | uppercase}}" class="col-md-2">
+        <panel *ngFor="let vessel of vessels | filterByName: text.value" id="{{vessel.id}}" title="{{vessel.name | uppercase}}" class="col-md-3">
             <vessel name="{{vessel.name}}" latitude="{{vessel.latitude}}" longitude="{{vessel.longitude}}"></vessel>
         </panel>
     </div>
