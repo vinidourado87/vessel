@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var router_1 = require('@angular/router');
+var vessel_component_1 = require('../vessel/vessel.component');
 var PanelComponent = (function () {
     function PanelComponent(http, formBuilder, router) {
         this.http = http;
@@ -31,6 +32,16 @@ var PanelComponent = (function () {
         this.http.delete('vessel/' + this.id, { headers: head })
             .subscribe(function () {
             _this.router.navigate(['/index.html']);
+        }, function (erro) { return console.log(erro); });
+    };
+    PanelComponent.prototype.findVessel = function (idParam) {
+        var head = new http_1.Headers();
+        head.append('Content-type', 'application/json');
+        this.http.get('vessel/' + idParam, { headers: head })
+            .map(function (res) { return res.text(); })
+            .subscribe(function (vessel) {
+            console.log(vessel);
+            console.log(new vessel_component_1.VesselComponent().fromJson(vessel));
         }, function (erro) { return console.log(erro); });
     };
     __decorate([

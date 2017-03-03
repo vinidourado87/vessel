@@ -5,6 +5,7 @@ var list_component_1 = require('./list/list.component');
 var appRoutes = [
     { path: '', component: list_component_1.ListComponent },
     { path: 'vessel', component: edit_component_1.EditComponent },
+    { path: 'vessel/edit/:id', component: edit_component_1.EditComponent },
     { path: '**', component: list_component_1.ListComponent }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

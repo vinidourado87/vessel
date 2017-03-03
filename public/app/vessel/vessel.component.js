@@ -12,6 +12,21 @@ var core_1 = require('@angular/core');
 var VesselComponent = (function () {
     function VesselComponent() {
     }
+    VesselComponent.prototype.fromJson = function (json) {
+        var parsedJson = JSON.parse(json);
+        this.id = parsedJson['id'];
+        this.name = parsedJson['name'];
+        this.width = parsedJson['width'];
+        this.length = parsedJson['length'];
+        this.draft = parsedJson['draft'];
+        this.latitude = parsedJson['latitude'];
+        this.longitude = parsedJson['longitude'];
+        return this;
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Number)
+    ], VesselComponent.prototype, "id", void 0);
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)

@@ -1,6 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-         <h3 class="panel-title pull-left">{{title}}</h3>
+         <a (click)="findVessel(id)" style="cursor: pointer;">
+             <h3 class="panel-title pull-left">{{title}}</h3>
+         </a>
          <form (submit)="deleteVessel($event)">
              <input type="hidden" formControlName="id" name="id" value="{{id}}" />
              <button class="btn btn-danger pull-right" title="Delete">X</button>

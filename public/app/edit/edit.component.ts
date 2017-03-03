@@ -50,4 +50,14 @@ export class EditComponent {
             this.router.navigate(['']);
         }, erro => console.log(erro));
     }
+
+    editVessel(id) {
+        let head = new Headers();
+        head.append('Content-type', 'application/json');
+
+        this.http.get('vessel/' + id, {headers: head})
+        .subscribe(vessels => {
+            console.log(vessels);
+        }, erro => console.log(erro));
+    }
 }

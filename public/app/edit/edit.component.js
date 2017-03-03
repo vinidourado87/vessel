@@ -46,6 +46,14 @@ var EditComponent = (function () {
             _this.router.navigate(['']);
         }, function (erro) { return console.log(erro); });
     };
+    EditComponent.prototype.editVessel = function (id) {
+        var head = new http_1.Headers();
+        head.append('Content-type', 'application/json');
+        this.http.get('vessel/' + id, { headers: head })
+            .subscribe(function (vessels) {
+            console.log(vessels);
+        }, function (erro) { return console.log(erro); });
+    };
     EditComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

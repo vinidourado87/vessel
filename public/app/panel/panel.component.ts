@@ -1,7 +1,9 @@
 import { Component, Input, OnInit} from '@angular/core'
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EditComponent } from '../edit/edit.component';
+import { VesselComponent } from '../vessel/vessel.component';
 
 @Component({
     moduleId: module.id,
@@ -38,6 +40,18 @@ export class PanelComponent implements OnInit {
         this.http.delete('vessel/' + this.id, {headers: head})
         .subscribe(() => {
             this.router.navigate(['/index.html']);
+        }, erro => console.log(erro));
+    }
+
+    findVessel(idParam) {
+        let head = new Headers();
+        head.append('Content-type', 'application/json');
+
+        this.http.get('vessel/' + idParam, {headers: head})
+        .map((res: Response) => res.text())
+        .subscribe((vessel: Object) => {
+            console.log(vessel);
+            console.log(new VesselComponent().fromJson(vessel));
         }, erro => console.log(erro));
     }
 }

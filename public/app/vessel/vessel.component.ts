@@ -7,6 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class VesselComponent {
 
+    @Input() id: number;
     @Input() name: string;
     @Input() width: number;
     @Input() length: number;
@@ -14,4 +15,15 @@ export class VesselComponent {
     @Input() latitude: string;
     @Input() longitude: string;
 
+    fromJson(json) {
+        var parsedJson = JSON.parse(json);
+        this.id = parsedJson['id'];
+        this.name = parsedJson['name'];
+        this.width = parsedJson['width'];
+        this.length = parsedJson['length'];
+        this.draft = parsedJson['draft'];
+        this.latitude = parsedJson['latitude'];
+        this.longitude = parsedJson['longitude'];
+        return this;
+    }
 }

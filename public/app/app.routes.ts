@@ -6,6 +6,7 @@ const appRoutes: Routes = [
     
     { path: '', component: ListComponent},
     { path: 'vessel', component: EditComponent},
+    { path: 'vessel/edit/:id', component: EditComponent},
     { path: '**', component: ListComponent}
 ];
 
