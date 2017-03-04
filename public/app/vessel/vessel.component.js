@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var VesselComponent = (function () {
     function VesselComponent() {
     }
@@ -23,43 +24,42 @@ var VesselComponent = (function () {
         this.longitude = parsedJson['longitude'];
         return this;
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], VesselComponent.prototype, "id", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], VesselComponent.prototype, "name", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], VesselComponent.prototype, "width", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], VesselComponent.prototype, "length", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], VesselComponent.prototype, "draft", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], VesselComponent.prototype, "latitude", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], VesselComponent.prototype, "longitude", void 0);
-    VesselComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'vessel',
-            templateUrl: './vessel.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], VesselComponent);
     return VesselComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], VesselComponent.prototype, "id", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], VesselComponent.prototype, "name", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], VesselComponent.prototype, "width", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], VesselComponent.prototype, "length", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Number)
+], VesselComponent.prototype, "draft", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], VesselComponent.prototype, "latitude", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], VesselComponent.prototype, "longitude", void 0);
+VesselComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'vessel',
+        templateUrl: './vessel.component.html'
+    })
+], VesselComponent);
 exports.VesselComponent = VesselComponent;
 //# sourceMappingURL=vessel.component.js.map

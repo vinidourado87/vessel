@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var vessel_component_1 = require('../vessel/vessel.component');
-var http_1 = require('@angular/http');
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var vessel_component_1 = require("../vessel/vessel.component");
+var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
 var EditComponent = (function () {
     function EditComponent(http, formBuilder, router) {
         this.vessel = new vessel_component_1.VesselComponent();
@@ -54,15 +55,15 @@ var EditComponent = (function () {
             console.log(vessels);
         }, function (erro) { return console.log(erro); });
     };
-    EditComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'cadastro',
-            templateUrl: './edit.component.html'
-        }), 
-        __metadata('design:paramtypes', [http_1.Http, forms_1.FormBuilder, router_1.Router])
-    ], EditComponent);
     return EditComponent;
 }());
+EditComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'cadastro',
+        templateUrl: './edit.component.html'
+    }),
+    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.Router])
+], EditComponent);
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map
