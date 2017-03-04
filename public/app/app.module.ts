@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 @NgModule({
  imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule, ReactiveFormsModule,
     AgmCoreModule.forRoot({
-        //apiKey: "YOUR KEY GOES HERE",
+        apiKey: "AIzaSyDLcKRGPRGrMnZN5QxRLhEJOf3NovPzZQ8",
         libraries: ["places"]
     })],
  declarations: [ AppComponent, EditComponent, ListComponent ],

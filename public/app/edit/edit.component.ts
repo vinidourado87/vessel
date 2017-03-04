@@ -34,9 +34,7 @@ export class EditComponent {
             name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
             width: [ '', Validators.compose([Validators.required]) ],
             length: [ '', Validators.compose([Validators.required]) ],
-            draft: [ '', Validators.compose([Validators.required]) ],
-            latitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
-            longitude: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ]
+            draft: [ '', Validators.compose([Validators.required]) ]
         });
         this.router = router;
     }
@@ -52,8 +50,8 @@ export class EditComponent {
             width: parseFloat(this.vessel.width.toString()),
             length: parseFloat(this.vessel.length.toString()),
             draft: parseFloat(this.vessel.draft.toString()),
-            latitude: this.vessel.latitude,
-            longitude: this.vessel.longitude
+            latitude: this.latitude.toString(),
+            longitude: this.longitude.toString()
         });
 
         this.http.post('vessel', data, {headers: head})

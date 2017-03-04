@@ -27,7 +27,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, panel_module_1.PanelModule, vessel_module_1.VesselModule, app_routes_1.routing, forms_1.FormsModule, forms_1.ReactiveFormsModule,
             core_2.AgmCoreModule.forRoot({
-                //apiKey: "YOUR KEY GOES HERE",
+                apiKey: "AIzaSyDLcKRGPRGrMnZN5QxRLhEJOf3NovPzZQ8",
                 libraries: ["places"]
             })],
         declarations: [app_component_1.AppComponent, edit_component_1.EditComponent, list_component_1.ListComponent],

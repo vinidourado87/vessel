@@ -25,9 +25,7 @@ var EditComponent = (function () {
             name: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
             width: ['', forms_1.Validators.compose([forms_1.Validators.required])],
             length: ['', forms_1.Validators.compose([forms_1.Validators.required])],
-            draft: ['', forms_1.Validators.compose([forms_1.Validators.required])],
-            latitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
-            longitude: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])]
+            draft: ['', forms_1.Validators.compose([forms_1.Validators.required])]
         });
         this.router = router;
     }
@@ -41,8 +39,8 @@ var EditComponent = (function () {
             width: parseFloat(this.vessel.width.toString()),
             length: parseFloat(this.vessel.length.toString()),
             draft: parseFloat(this.vessel.draft.toString()),
-            latitude: this.vessel.latitude,
-            longitude: this.vessel.longitude
+            latitude: this.latitude.toString(),
+            longitude: this.longitude.toString()
         });
         this.http.post('vessel', data, { headers: head })
             .subscribe(function () {
