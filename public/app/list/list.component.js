@@ -11,9 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
+var core_2 = require("angular2-google-maps/core");
 var ListComponent = (function () {
-    function ListComponent(http) {
+    function ListComponent(http, mapsAPILoader, ngZone) {
         var _this = this;
+        this.mapsAPILoader = mapsAPILoader;
+        this.ngZone = ngZone;
         this.vessels = [];
         http
             .get('vessels')
@@ -22,15 +26,62 @@ var ListComponent = (function () {
             _this.vessels = vessels;
         }, function (erro) { return console.log(erro); });
     }
+    ListComponent.prototype.ngOnInit = function () {
+        //set google maps defaults
+        this.zoom = 4;
+        this.latitude = 39.8282;
+        this.longitude = -98.5795;
+        //create search FormControl
+        this.searchControl = new forms_1.FormControl();
+        //set current position
+        this.setCurrentPosition();
+        //load Places Autocomplete
+        /*this.mapsAPILoader.load().then(() => {
+          let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+            types: ["address"]
+          });
+          autocomplete.addListener("place_changed", () => {
+            this.ngZone.run(() => {
+              //get the place result
+              let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+      
+              //verify result
+              if (place.geometry === undefined || place.geometry === null) {
+                return;
+              }
+              
+              //set latitude, longitude and zoom
+              this.latitude = place.geometry.location.lat();
+              this.longitude = place.geometry.location.lng();
+              this.zoom = 12;
+            });
+          });
+        });*/
+    };
+    ListComponent.prototype.setCurrentPosition = function () {
+        var _this = this;
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.latitude = position.coords.latitude;
+                _this.longitude = position.coords.longitude;
+                _this.zoom = 12;
+            });
+        }
+    };
     return ListComponent;
 }());
+__decorate([
+    core_1.ViewChild("search"),
+    __metadata("design:type", core_1.ElementRef)
+], ListComponent.prototype, "searchElementRef", void 0);
 ListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'list',
-        templateUrl: './list.component.html'
+        templateUrl: './list.component.html',
+        styles: [".sebm-google-map-container { height: 300px; }"]
     }),
-    __metadata("design:paramtypes", [http_1.Http])
+    __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
 ], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map

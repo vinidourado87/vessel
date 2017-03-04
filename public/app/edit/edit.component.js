@@ -14,8 +14,11 @@ var vessel_component_1 = require("../vessel/vessel.component");
 var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
+var core_2 = require("angular2-google-maps/core");
 var EditComponent = (function () {
-    function EditComponent(http, formBuilder, router) {
+    function EditComponent(http, formBuilder, router, mapsAPILoader, ngZone) {
+        this.mapsAPILoader = mapsAPILoader;
+        this.ngZone = ngZone;
         this.vessel = new vessel_component_1.VesselComponent();
         this.http = http;
         this.myForm = formBuilder.group({
@@ -55,15 +58,63 @@ var EditComponent = (function () {
             console.log(vessels);
         }, function (erro) { return console.log(erro); });
     };
+    EditComponent.prototype.ngOnInit = function () {
+        //set google maps defaults
+        this.zoom = 4;
+        this.latitude = 39.8282;
+        this.longitude = -98.5795;
+        //create search FormControl
+        this.searchControl = new forms_1.FormControl();
+        //set current position
+        this.setCurrentPosition();
+        //load Places Autocomplete
+        /*this.mapsAPILoader.load().then(() => {
+        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+            types: ["address"]
+        });
+        autocomplete.addListener("place_changed", () => {
+            this.ngZone.run(() => {
+            //get the place result
+            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    
+            //verify result
+            if (place.geometry === undefined || place.geometry === null) {
+                return;
+            }
+            
+            //set latitude, longitude and zoom
+            this.latitude = place.geometry.location.lat();
+            this.longitude = place.geometry.location.lng();
+            this.zoom = 12;
+            });
+        });
+        });*/
+    };
+    EditComponent.prototype.setCurrentPosition = function () {
+        var _this = this;
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.latitude = position.coords.latitude;
+                _this.longitude = position.coords.longitude;
+                _this.zoom = 12;
+            });
+        }
+    };
     return EditComponent;
 }());
+__decorate([
+    core_1.ViewChild("search"),
+    __metadata("design:type", core_1.ElementRef)
+], EditComponent.prototype, "searchElementRef", void 0);
 EditComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'cadastro',
-        templateUrl: './edit.component.html'
+        templateUrl: './edit.component.html',
+        styles: [".sebm-google-map-container { height: 300px; }"]
     }),
-    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.Router])
+    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.Router,
+        core_2.MapsAPILoader, core_1.NgZone])
 ], EditComponent);
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map
