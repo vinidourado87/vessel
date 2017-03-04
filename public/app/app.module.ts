@@ -12,8 +12,11 @@ import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import 'rxjs/add/operator/map';
 
 @NgModule({
- imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule,
-    ReactiveFormsModule, AgmCoreModule.forRoot({libraries: ["places"]}) ],
+ imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule, ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+        //apiKey: "YOUR KEY GOES HERE",
+        libraries: ["places"]
+    })],
  declarations: [ AppComponent, EditComponent, ListComponent ],
  bootstrap: [ AppComponent ]
 })

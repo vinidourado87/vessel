@@ -59,6 +59,7 @@ var EditComponent = (function () {
         }, function (erro) { return console.log(erro); });
     };
     EditComponent.prototype.ngOnInit = function () {
+        var _this = this;
         //set google maps defaults
         this.zoom = 4;
         this.latitude = 39.8282;
@@ -68,27 +69,25 @@ var EditComponent = (function () {
         //set current position
         this.setCurrentPosition();
         //load Places Autocomplete
-        /*this.mapsAPILoader.load().then(() => {
-        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-            types: ["address"]
-        });
-        autocomplete.addListener("place_changed", () => {
-            this.ngZone.run(() => {
-            //get the place result
-            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-    
-            //verify result
-            if (place.geometry === undefined || place.geometry === null) {
-                return;
-            }
-            
-            //set latitude, longitude and zoom
-            this.latitude = place.geometry.location.lat();
-            this.longitude = place.geometry.location.lng();
-            this.zoom = 12;
+        this.mapsAPILoader.load().then(function () {
+            var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
+                types: ["address"]
+            });
+            autocomplete.addListener("place_changed", function () {
+                _this.ngZone.run(function () {
+                    //get the place result
+                    var place = autocomplete.getPlace();
+                    //verify result
+                    if (place.geometry === undefined || place.geometry === null) {
+                        return;
+                    }
+                    //set latitude, longitude and zoom
+                    _this.latitude = place.geometry.location.lat();
+                    _this.longitude = place.geometry.location.lng();
+                    _this.zoom = 12;
+                });
             });
         });
-        });*/
     };
     EditComponent.prototype.setCurrentPosition = function () {
         var _this = this;
