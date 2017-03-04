@@ -23,24 +23,14 @@ var ListComponent = (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;
+            console.log(vessels);
         }, function (erro) { return console.log(erro); });
     }
     ListComponent.prototype.ngOnInit = function () {
         //set google maps defaults (Dublin)
-        this.zoom = 12;
+        this.zoom = 8;
         this.latitude = 53.35124159999999;
         this.longitude = -6.260778899999991;
-        //set current position
-        this.setVesselsPosition();
-    };
-    ListComponent.prototype.setVesselsPosition = function () {
-        /*if ("geolocation" in navigator) {
-          navigator.geolocation.getCurrentPosition((position) => {
-            this.latitude = position.coords.latitude;
-            this.longitude = position.coords.longitude;
-            this.zoom = 12;
-          });
-        }*/
     };
     return ListComponent;
 }());

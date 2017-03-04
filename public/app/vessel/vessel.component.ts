@@ -12,8 +12,8 @@ export class VesselComponent {
     @Input() width: number;
     @Input() length: number;
     @Input() draft: number;
-    @Input() latitude: string;
-    @Input() longitude: string;
+    @Input() latitude: number;
+    @Input() longitude: number;
 
     fromJson(json) {
         var parsedJson = JSON.parse(json);

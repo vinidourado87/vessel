@@ -41,7 +41,7 @@ class VesselController @Inject()(repo: VesselRepository, val messagesApi: Messag
     }
   }
 
-  def relocate(id: Long, latitude: String, longitude: String) = Action.async {
+  def relocate(id: Long, latitude: Double, longitude: Double) = Action.async {
     repo.relocate(id, latitude, longitude).map { vessel =>
       Ok(Json.toJson(vessel))
     }

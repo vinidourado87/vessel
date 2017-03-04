@@ -48,11 +48,11 @@ __decorate([
 ], VesselComponent.prototype, "draft", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], VesselComponent.prototype, "latitude", void 0);
 __decorate([
     core_1.Input(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], VesselComponent.prototype, "longitude", void 0);
 VesselComponent = __decorate([
     core_1.Component({

@@ -23,15 +23,15 @@ class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     def width = column[Double]("width")
     def length = column[Double]("length")
     def draft = column[Double]("draft")
-    def latitude = column[String]("latitude")
-    def longitude = column[String]("longitude")
+    def latitude = column[Double]("latitude")
+    def longitude = column[Double]("longitude")
 
     def * = (id, name, width, length, draft, latitude, longitude) <> ((Vessel.apply _).tupled, Vessel.unapply)
   }
   
   private val vessel = TableQuery[VesselTable]
 
-  def create(name: String, width: Double, length: Double, draft: Double, latitude: String, longitude: String): Future[Vessel] = db.run {
+  def create(name: String, width: Double, length: Double, draft: Double, latitude: Double, longitude: Double): Future[Vessel] = db.run {
     (vessel.map(p => (p.name, p.width, p.length, p.draft, p.latitude, p.longitude))
       returning vessel.map(_.id)
       into ((vessel, id) => Vessel(id, vessel._1, vessel._2, vessel._3, vessel._4, vessel._5, vessel._6))
@@ -42,7 +42,7 @@ class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     vessel.result
   }
 
-  def relocate(id: Long, newLatitude: String, newLongitude: String) = {
+  def relocate(id: Long, newLatitude: Double, newLongitude: Double) = {
     val query = vessel.filter(_.id === id).map(v => (v.latitude, v.longitude)).update((newLatitude, newLongitude))
     db.run(query)
     find(id)

@@ -26,26 +26,14 @@ export class ListComponent implements OnInit {
     .map(res => res.json())
     .subscribe(vessels => {
         this.vessels = vessels;
+        console.log(vessels);
     }, erro => console.log(erro));
   }
 
   ngOnInit() {
     //set google maps defaults (Dublin)
-    this.zoom = 12;
+    this.zoom = 8;
     this.latitude = 53.35124159999999;
     this.longitude = -6.260778899999991;
-
-    //set current position
-    this.setVesselsPosition();
-  }
-
-  private setVesselsPosition() {
-    /*if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }*/
   }
 }

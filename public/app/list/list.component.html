@@ -27,7 +27,16 @@
 </div>
 
 <div class="container" style="padding-bottom: 40px;">
-    <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-        <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
-    </sebm-google-map>
+  <sebm-google-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+    <sebm-google-map-marker *ngFor="let vessel of vessels" 
+        [latitude]="vessel.latitude" 
+        [longitude]="vessel.longitude">
+
+      <sebm-google-map-info-window>
+        <p>More info!</p>
+        <p>More info!</p>
+        <p>More info!</p>
+      </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+  </sebm-google-map>
 </div>

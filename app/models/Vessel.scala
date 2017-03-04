@@ -4,11 +4,11 @@ import play.api.libs.json._
 import play.api.libs.functional.syntax._
 
 case class Vessel(id: Long = 0, name: String, width: Double, length: Double, draft: Double,
-    latitude: String, longitude: String)
+    latitude: Double, longitude: Double)
 
 object Vessel {
 
-  def makeVessel(name: String, width: Double, length: Double, draft: Double, latitude: String, longitude: String) = 
+  def makeVessel(name: String, width: Double, length: Double, draft: Double, latitude: Double, longitude: Double) = 
     Vessel(name = name, width = width, length = length, draft = draft, latitude = latitude, longitude = longitude)
 
   implicit val reads: Reads[Vessel] = (
@@ -16,8 +16,8 @@ object Vessel {
     (__ \ "width").read[Double] and
     (__ \ "length").read[Double] and
     (__ \ "draft").read[Double] and
-    (__ \ "latitude").read[String] and
-    (__ \ "longitude").read[String]
+    (__ \ "latitude").read[Double] and
+    (__ \ "longitude").read[Double]
    )(makeVessel _)
    
    implicit val writes: Writes[Vessel] = (
@@ -26,7 +26,7 @@ object Vessel {
     (__ \ "width").write[Double] and
     (__ \ "length").write[Double] and
     (__ \ "draft").write[Double] and
-    (__ \ "latitude").write[String] and
-    (__ \ "longitude").write[String]
+    (__ \ "latitude").write[Double] and
+    (__ \ "longitude").write[Double]
    )(unlift(Vessel.unapply))
 }

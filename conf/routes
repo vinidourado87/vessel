@@ -9,7 +9,7 @@ POST    /vessel                                                   controllers.Ve
 GET     /vessels                                                  controllers.VesselController.list
 DELETE  /vessel/:id                                               controllers.VesselController.delete(id: Long)
 GET     /vessel/:id                                               controllers.VesselController.find(id: Long)
-PATCH   /vessel/:id/latitude/:latitude/longitude/:longitude       controllers.VesselController.relocate(id: Long, latitude: String, longitude: String)
+PATCH   /vessel/:id/latitude/:latitude/longitude/:longitude       controllers.VesselController.relocate(id: Long, latitude: Double, longitude: Double)
 
 
 # Map static resources from the /public folder to the /assets URL path

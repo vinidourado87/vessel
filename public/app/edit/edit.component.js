@@ -39,8 +39,8 @@ var EditComponent = (function () {
             width: parseFloat(this.vessel.width.toString()),
             length: parseFloat(this.vessel.length.toString()),
             draft: parseFloat(this.vessel.draft.toString()),
-            latitude: this.latitude.toString(),
-            longitude: this.longitude.toString()
+            latitude: parseFloat(this.latitude),
+            longitude: parseFloat(this.longitude)
         });
         this.http.post('vessel', data, { headers: head })
             .subscribe(function () {
@@ -58,28 +58,21 @@ var EditComponent = (function () {
     };
     EditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //set google maps defaults
-        this.zoom = 12;
+        this.zoom = 10;
         this.latitude = 53.35124159999999;
         this.longitude = -6.260778899999991;
-        //create search FormControl
         this.searchControl = new forms_1.FormControl();
-        //set current position
         this.setCurrentPosition();
-        //load Places Autocomplete
         this.mapsAPILoader.load().then(function () {
             var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
                 types: ["address"]
             });
             autocomplete.addListener("place_changed", function () {
                 _this.ngZone.run(function () {
-                    //get the place result
                     var place = autocomplete.getPlace();
-                    //verify result
                     if (place.geometry === undefined || place.geometry === null) {
                         return;
                     }
-                    //set latitude, longitude and zoom
                     _this.latitude = place.geometry.location.lat();
                     _this.longitude = place.geometry.location.lng();
                     _this.zoom = 12;
@@ -93,7 +86,7 @@ var EditComponent = (function () {
             navigator.geolocation.getCurrentPosition(function (position) {
                 _this.latitude = position.coords.latitude;
                 _this.longitude = position.coords.longitude;
-                _this.zoom = 12;
+                _this.zoom = 10;
             });
         }
     };
