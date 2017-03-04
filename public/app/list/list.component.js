@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var forms_1 = require("@angular/forms");
 var core_2 = require("angular2-google-maps/core");
 var ListComponent = (function () {
     function ListComponent(http, mapsAPILoader, ngZone) {
@@ -27,46 +26,21 @@ var ListComponent = (function () {
         }, function (erro) { return console.log(erro); });
     }
     ListComponent.prototype.ngOnInit = function () {
-        //set google maps defaults
-        this.zoom = 4;
-        this.latitude = 39.8282;
-        this.longitude = -98.5795;
-        //create search FormControl
-        this.searchControl = new forms_1.FormControl();
+        //set google maps defaults (Dublin)
+        this.zoom = 12;
+        this.latitude = 53.35124159999999;
+        this.longitude = -6.260778899999991;
         //set current position
-        this.setCurrentPosition();
-        //load Places Autocomplete
-        /*this.mapsAPILoader.load().then(() => {
-        let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-            types: ["address"]
-        });
-        autocomplete.addListener("place_changed", () => {
-            this.ngZone.run(() => {
-            //get the place result
-            let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-    
-            //verify result
-            if (place.geometry === undefined || place.geometry === null) {
-                return;
-            }
-            
-            //set latitude, longitude and zoom
-            this.latitude = place.geometry.location.lat();
-            this.longitude = place.geometry.location.lng();
-            this.zoom = 12;
-            });
-        });
-    });*/
+        this.setVesselsPosition();
     };
-    ListComponent.prototype.setCurrentPosition = function () {
-        var _this = this;
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                _this.latitude = position.coords.latitude;
-                _this.longitude = position.coords.longitude;
-                _this.zoom = 12;
-            });
-        }
+    ListComponent.prototype.setVesselsPosition = function () {
+        /*if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            this.zoom = 12;
+          });
+        }*/
     };
     return ListComponent;
 }());

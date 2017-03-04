@@ -59,9 +59,9 @@ var EditComponent = (function () {
     EditComponent.prototype.ngOnInit = function () {
         var _this = this;
         //set google maps defaults
-        this.zoom = 4;
-        this.latitude = 39.8282;
-        this.longitude = -98.5795;
+        this.zoom = 12;
+        this.latitude = 53.35124159999999;
+        this.longitude = -6.260778899999991;
         //create search FormControl
         this.searchControl = new forms_1.FormControl();
         //set current position

@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
  imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule, ReactiveFormsModule,
     AgmCoreModule.forRoot({
         apiKey: "AIzaSyDLcKRGPRGrMnZN5QxRLhEJOf3NovPzZQ8",
-        libraries: ["places"]
+        libraries: ["places", "geometry"]
     })],
  declarations: [ AppComponent, EditComponent, ListComponent ],
  bootstrap: [ AppComponent ]
