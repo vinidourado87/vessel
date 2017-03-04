@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     //set google maps defaults (Dublin)
-    this.zoom = 8;
+    this.zoom = 2;
     this.latitude = 53.35124159999999;
     this.longitude = -6.260778899999991;
   }
