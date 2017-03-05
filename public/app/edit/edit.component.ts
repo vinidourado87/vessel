@@ -50,8 +50,8 @@ export class EditComponent {
         width: parseFloat(this.vessel.width.toString()),
         length: parseFloat(this.vessel.length.toString()),
         draft: parseFloat(this.vessel.draft.toString()),
-        latitude: parseFloat(this.latitude),
-        longitude: parseFloat(this.longitude)
+        latitude: parseFloat(this.latitude.toString()),
+        longitude: parseFloat(this.longitude.toString())
     });
 
     this.http.post('vessel', data, {headers: head})

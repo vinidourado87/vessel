@@ -27,7 +27,6 @@ var ListComponent = (function () {
         }, function (erro) { return console.log(erro); });
     }
     ListComponent.prototype.ngOnInit = function () {
-        //set google maps defaults (Dublin)
         this.zoom = 2;
         this.latitude = 53.35124159999999;
         this.longitude = -6.260778899999991;
@@ -43,7 +42,7 @@ ListComponent = __decorate([
         moduleId: module.id,
         selector: 'list',
         templateUrl: './list.component.html',
-        styles: [".sebm-google-map-container { height: 300px; }"]
+        styles: [".sebm-google-map-container { height: 600px; }"]
     }),
     __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
 ], ListComponent);
