@@ -9,4 +9,4 @@ Technologies:
 How to run:
 - ./activator ui
 
-- cd public && npm start
+- cd public && npm install && npm start
