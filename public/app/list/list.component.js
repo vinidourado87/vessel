@@ -28,7 +28,7 @@ var ListComponent = (function () {
     }
     ListComponent.prototype.ngOnInit = function () {
         this.zoom = 2;
-        this.latitude = 53.35124159999999;
+        this.latitude = 35.35124159999999;
         this.longitude = -6.260778899999991;
     };
     return ListComponent;
@@ -42,7 +42,7 @@ ListComponent = __decorate([
         moduleId: module.id,
         selector: 'list',
         templateUrl: './list.component.html',
-        styles: [".sebm-google-map-container { height: 600px; }"]
+        styles: [".sebm-google-map-container { height: 650px; }"]
     }),
     __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
 ], ListComponent);

@@ -8,7 +8,7 @@ import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
     moduleId: module.id,
     selector: 'list',
     templateUrl: './list.component.html',
-    styles: [`.sebm-google-map-container { height: 600px; }`]
+    styles: [`.sebm-google-map-container { height: 650px; }`]
 })
 export class ListComponent implements OnInit {
   vessels: Object[] = [];
@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.zoom = 2;
-    this.latitude = 53.35124159999999;
+    this.latitude = 35.35124159999999;
     this.longitude = -6.260778899999991;
   }
 }
