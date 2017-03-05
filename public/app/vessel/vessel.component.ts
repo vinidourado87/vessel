@@ -7,7 +7,7 @@ import {Component, Input} from '@angular/core';
 })
 export class VesselComponent {
 
-    @Input() id: number;
+    @Input() id: number = 0;
     @Input() name: string;
     @Input() width: number;
     @Input() length: number;

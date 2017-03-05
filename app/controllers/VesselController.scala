@@ -22,7 +22,7 @@ class VesselController @Inject()(repo: VesselRepository, val messagesApi: Messag
           BadRequest(Json.obj("status" -> "KO", "message" -> JsError.toJson(errors)))
         },
         vessel => {
-          repo.create(vessel.name, vessel.width, vessel.length, vessel.draft, vessel.latitude, vessel.longitude)
+          repo.createOrUpdate(vessel)
           Ok(Json.obj("status" -> "OK", "message" -> ("Vessel '" + vessel.name + "' saved.")))
         }
       )

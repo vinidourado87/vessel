@@ -8,10 +8,11 @@ case class Vessel(id: Long = 0, name: String, width: Double, length: Double, dra
 
 object Vessel {
 
-  def makeVessel(name: String, width: Double, length: Double, draft: Double, latitude: Double, longitude: Double) = 
-    Vessel(name = name, width = width, length = length, draft = draft, latitude = latitude, longitude = longitude)
+  def makeVessel(id: Long = 0, name: String, width: Double, length: Double, draft: Double, latitude: Double, longitude: Double) = 
+    Vessel(id = id, name = name, width = width, length = length, draft = draft, latitude = latitude, longitude = longitude)
 
   implicit val reads: Reads[Vessel] = (
+    (__ \ "id").read[Long] and
     (__ \ "name").read[String] and
     (__ \ "width").read[Double] and
     (__ \ "length").read[Double] and
