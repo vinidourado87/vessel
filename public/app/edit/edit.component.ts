@@ -1,6 +1,6 @@
 import { Component, Input, NgModule, NgZone, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { VesselComponent } from '../vessel/vessel.component';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { FormGroup, FormBuilder, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BrowserModule } from "@angular/platform-browser";
@@ -31,10 +31,11 @@ export class EditComponent {
 
     this.http = http;
     this.myForm = formBuilder.group({
-        name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
-        width: [ '', Validators.compose([Validators.required]) ],
-        length: [ '', Validators.compose([Validators.required]) ],
-        draft: [ '', Validators.compose([Validators.required]) ]
+      id: [],
+      name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
+      width: [ '', Validators.compose([Validators.required]) ],
+      length: [ '', Validators.compose([Validators.required]) ],
+      draft: [ '', Validators.compose([Validators.required]) ]
     });
     this.router = router;
   }
@@ -85,6 +86,11 @@ export class EditComponent {
         });
       });
     });
+
+    var idParam = this.router.parseUrl(this.router.url).queryParams["id"];
+    if (idParam) {
+      this.loadVessel(idParam);
+    }
   }
 
   private setCurrentPosition() {
@@ -95,5 +101,16 @@ export class EditComponent {
         this.zoom = 10;
       });
     }
+  }
+
+  private loadVessel(idParam){
+    let head = new Headers();
+    head.append('Content-type', 'application/json');
+
+    this.http.get('vessel/' + idParam, {headers: head})
+    .map((res: Response) => res.text())
+    .subscribe((vessel: Object) => {
+      this.vessel = new VesselComponent().fromJson(vessel);
+    }, erro => console.log(erro));
   }
 }

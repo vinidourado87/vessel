@@ -22,6 +22,7 @@ var EditComponent = (function () {
         this.vessel = new vessel_component_1.VesselComponent();
         this.http = http;
         this.myForm = formBuilder.group({
+            id: [],
             name: ['', forms_1.Validators.compose([forms_1.Validators.required, forms_1.Validators.minLength(4)])],
             width: ['', forms_1.Validators.compose([forms_1.Validators.required])],
             length: ['', forms_1.Validators.compose([forms_1.Validators.required])],
@@ -69,6 +70,10 @@ var EditComponent = (function () {
                 });
             });
         });
+        var idParam = this.router.parseUrl(this.router.url).queryParams["id"];
+        if (idParam) {
+            this.loadVessel(idParam);
+        }
     };
     EditComponent.prototype.setCurrentPosition = function () {
         var _this = this;
@@ -79,6 +84,16 @@ var EditComponent = (function () {
                 _this.zoom = 10;
             });
         }
+    };
+    EditComponent.prototype.loadVessel = function (idParam) {
+        var _this = this;
+        var head = new http_1.Headers();
+        head.append('Content-type', 'application/json');
+        this.http.get('vessel/' + idParam, { headers: head })
+            .map(function (res) { return res.text(); })
+            .subscribe(function (vessel) {
+            _this.vessel = new vessel_component_1.VesselComponent().fromJson(vessel);
+        }, function (erro) { return console.log(erro); });
     };
     return EditComponent;
 }());

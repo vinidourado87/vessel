@@ -44,13 +44,6 @@ export class PanelComponent implements OnInit {
     }
 
     findVessel(idParam) {
-        let head = new Headers();
-        head.append('Content-type', 'application/json');
-
-        this.http.get('vessel/' + idParam, {headers: head})
-        .map((res: Response) => res.text())
-        .subscribe((vessel: Object) => {
-            console.log(new VesselComponent().fromJson(vessel));
-        }, erro => console.log(erro));
+        this.router.navigate(['/vessel/edit/' + idParam]);
     }
 }

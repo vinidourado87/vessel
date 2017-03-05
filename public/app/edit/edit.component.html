@@ -5,6 +5,7 @@
 </div>
 <div class="container">
     <form [formGroup]="myForm" class="row" (submit)="addVessel($event)">
+        <input formControlName="id" name="id" type="hidden" [(ngModel)]="vessel.id">
 
         <div class="col-md-6">
             <div class="form-group">
