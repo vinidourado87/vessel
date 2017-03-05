@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
     .map(res => res.json())
     .subscribe(vessels => {
         this.vessels = vessels;
-        console.log(vessels);
     }, erro => console.log(erro));
   }
 

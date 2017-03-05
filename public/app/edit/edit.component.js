@@ -48,19 +48,9 @@ var EditComponent = (function () {
             _this.router.navigate(['']);
         }, function (erro) { return console.log(erro); });
     };
-    EditComponent.prototype.editVessel = function (id) {
-        var head = new http_1.Headers();
-        head.append('Content-type', 'application/json');
-        this.http.get('vessel/' + id, { headers: head })
-            .subscribe(function (vessels) {
-            console.log(vessels);
-        }, function (erro) { return console.log(erro); });
-    };
     EditComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.zoom = 10;
-        this.latitude = 53.35124159999999;
-        this.longitude = -6.260778899999991;
         this.searchControl = new forms_1.FormControl();
         this.setCurrentPosition();
         this.mapsAPILoader.load().then(function () {

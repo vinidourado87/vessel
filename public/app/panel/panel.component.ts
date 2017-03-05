@@ -50,7 +50,6 @@ export class PanelComponent implements OnInit {
         this.http.get('vessel/' + idParam, {headers: head})
         .map((res: Response) => res.text())
         .subscribe((vessel: Object) => {
-            console.log(vessel);
             console.log(new VesselComponent().fromJson(vessel));
         }, erro => console.log(erro));
     }

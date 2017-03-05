@@ -61,21 +61,8 @@ export class EditComponent {
     }, erro => console.log(erro));
   }
 
-  editVessel(id) {
-    let head = new Headers();
-    head.append('Content-type', 'application/json');
-
-    this.http.get('vessel/' + id, {headers: head})
-    .subscribe(vessels => {
-        console.log(vessels);
-    }, erro => console.log(erro));
-  }
-
   ngOnInit() {
     this.zoom = 10;
-    this.latitude = 53.35124159999999;
-    this.longitude = -6.260778899999991;
-    
     this.searchControl = new FormControl();
     
     this.setCurrentPosition();

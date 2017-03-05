@@ -41,7 +41,6 @@ var PanelComponent = (function () {
         this.http.get('vessel/' + idParam, { headers: head })
             .map(function (res) { return res.text(); })
             .subscribe(function (vessel) {
-            console.log(vessel);
             console.log(new vessel_component_1.VesselComponent().fromJson(vessel));
         }, function (erro) { return console.log(erro); });
     };
