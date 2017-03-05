@@ -21,12 +21,11 @@ export class ListComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(http: Http, private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
-    http
-    .get('vessels')
-    .map(res => res.json())
-    .subscribe(vessels => {
-        this.vessels = vessels;
-    }, erro => console.log(erro));
+    http.get('vessels')
+      .map(res => res.json())
+      .subscribe(vessels => {
+          this.vessels = vessels;
+      }, erro => console.log(erro));
   }
 
   ngOnInit() {

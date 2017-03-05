@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
     <h1 class="text-center">Vessel Management Tool</h1>
 </div>
-<div id="banner" style="padding-bottom: 80px;">
+<div id="banner" style="padding-bottom: 90px;">
 </div>
 <div class="container">
     <form [formGroup]="myForm" class="row" (submit)="addVessel($event)">
@@ -67,7 +67,9 @@
                     </span>
                 </div>
             </div>
+        </div>
 
+        <div class="col-md-6">
             <div style="padding-bottom: 10px;">
                 <div class="form-group">
                     <label>Location</label>
@@ -77,8 +79,9 @@
                     <sebm-google-map-marker [latitude]="latitude" [longitude]="longitude"></sebm-google-map-marker>
                 </sebm-google-map>
             </div>
-            
+        </div>
 
+        <div class="col-md-6">
             <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
                 Save
             </button>

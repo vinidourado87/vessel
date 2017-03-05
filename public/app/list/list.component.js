@@ -18,8 +18,7 @@ var ListComponent = (function () {
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
         this.vessels = [];
-        http
-            .get('vessels')
+        http.get('vessels')
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;
