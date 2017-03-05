@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container col-md-12" style="padding-bottom: 10px;">
     <div class="row">
         <div class="col-md-12">
             <form>
@@ -14,16 +13,17 @@
             </form>
         </div>
     </div>
-    <br>
-
+</div>
+<div class="container col-md-6">
     <div class="row">
-        <panel *ngFor="let vessel of vessels | filterByName: text.value" id="{{vessel.id}}" title="{{vessel.name | uppercase}}" class="col-md-3">
+        <panel *ngFor="let vessel of vessels | filterByName: text.value" id="{{vessel.id}}" 
+                title="{{vessel.name | uppercase}}" class="col-md-4">
             <vessel name="{{vessel.name}}" latitude="{{vessel.latitude}}" longitude="{{vessel.longitude}}"></vessel>
         </panel>
     </div>
 </div>
 
-<div class="container" style="padding-bottom: 40px;">
+<div class="container col-md-6" >
   <sebm-google-map [latitude]="latitude" [longitude]="longitude"
       [scrollwheel]="false" [zoom]="zoom">
     <sebm-google-map-marker *ngFor="let vessel of vessels | filterByName: text.value"
