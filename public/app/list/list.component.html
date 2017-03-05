@@ -25,3 +25,20 @@
         </panel>
     </div>
 </div>
+
+<div class="container" style="padding-bottom: 40px;">
+  <sebm-google-map [latitude]="latitude" [longitude]="longitude"
+      [scrollwheel]="false" [zoom]="zoom">
+    <sebm-google-map-marker *ngFor="let vessel of vessels"
+        [latitude]="vessel.latitude" 
+        [longitude]="vessel.longitude">
+
+      <sebm-google-map-info-window>
+        <p>Name: {{vessel.name}}</p>
+        <p>Width: {{vessel.width}} (m)</p>
+        <p>Length: {{vessel.length}} (m)</p>
+        <p>Draft: {{vessel.draft}} (m)</p>
+      </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+  </sebm-google-map>
+</div>

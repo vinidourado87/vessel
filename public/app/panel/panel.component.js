@@ -8,11 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var forms_1 = require('@angular/forms');
-var router_1 = require('@angular/router');
-var vessel_component_1 = require('../vessel/vessel.component');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
+var router_1 = require("@angular/router");
+var vessel_component_1 = require("../vessel/vessel.component");
 var PanelComponent = (function () {
     function PanelComponent(http, formBuilder, router) {
         this.http = http;
@@ -44,23 +45,23 @@ var PanelComponent = (function () {
             console.log(new vessel_component_1.VesselComponent().fromJson(vessel));
         }, function (erro) { return console.log(erro); });
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PanelComponent.prototype, "title", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], PanelComponent.prototype, "id", void 0);
-    PanelComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'panel',
-            templateUrl: './panel.component.html'
-        }), 
-        __metadata('design:paramtypes', [http_1.Http, forms_1.FormBuilder, router_1.Router])
-    ], PanelComponent);
     return PanelComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], PanelComponent.prototype, "title", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], PanelComponent.prototype, "id", void 0);
+PanelComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'panel',
+        templateUrl: './panel.component.html'
+    }),
+    __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.Router])
+], PanelComponent);
 exports.PanelComponent = PanelComponent;
 //# sourceMappingURL=panel.component.js.map

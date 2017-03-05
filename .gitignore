@@ -2,6 +2,7 @@ logs
 target
 project
 .cache-tests
+project/.sbtserver
 /.idea
 /.idea_modules
 /.classpath

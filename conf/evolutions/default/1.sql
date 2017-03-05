@@ -6,8 +6,8 @@ create table "vessel" (
   "width" double not null,
   "length" double not null,
   "draft" double not null,
-  "latitude" varchar not null,
-  "longitude" varchar not null
+  "latitude" double,
+  "longitude" double
 );
 
 create table "vessel_history" (

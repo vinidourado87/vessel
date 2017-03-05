@@ -8,13 +8,16 @@ import { VesselModule }  from './vessel/vessel.module';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import 'rxjs/add/operator/map';
 
 @NgModule({
- imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule,
-    ReactiveFormsModule ],
+ imports:[ BrowserModule, HttpModule, PanelModule, VesselModule, routing, FormsModule, ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+        apiKey: "AIzaSyDLcKRGPRGrMnZN5QxRLhEJOf3NovPzZQ8",
+        libraries: ["places", "geometry"]
+    })],
  declarations: [ AppComponent, EditComponent, ListComponent ],
  bootstrap: [ AppComponent ]
 })
-
 export class AppModule {  }

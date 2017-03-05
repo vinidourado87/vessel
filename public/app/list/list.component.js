@@ -8,28 +8,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var core_2 = require("angular2-google-maps/core");
 var ListComponent = (function () {
-    function ListComponent(http) {
+    function ListComponent(http, mapsAPILoader, ngZone) {
         var _this = this;
+        this.mapsAPILoader = mapsAPILoader;
+        this.ngZone = ngZone;
         this.vessels = [];
         http
             .get('vessels')
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;
+            console.log(vessels);
         }, function (erro) { return console.log(erro); });
     }
-    ListComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'list',
-            templateUrl: './list.component.html'
-        }), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], ListComponent);
+    ListComponent.prototype.ngOnInit = function () {
+        this.zoom = 2;
+        this.latitude = 53.35124159999999;
+        this.longitude = -6.260778899999991;
+    };
     return ListComponent;
 }());
+__decorate([
+    core_1.ViewChild("search"),
+    __metadata("design:type", core_1.ElementRef)
+], ListComponent.prototype, "searchElementRef", void 0);
+ListComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'list',
+        templateUrl: './list.component.html',
+        styles: [".sebm-google-map-container { height: 600px; }"]
+    }),
+    __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
+], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map
