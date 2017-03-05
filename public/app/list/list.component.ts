@@ -8,7 +8,7 @@ import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
     moduleId: module.id,
     selector: 'list',
     templateUrl: './list.component.html',
-    styles: [`.sebm-google-map-container { height: 650px; }`]
+    styles: [`.sebm-google-map-container { height: 500px; }`]
 })
 export class ListComponent implements OnInit {
   vessels: Object[] = [];

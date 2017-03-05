@@ -41,7 +41,7 @@ ListComponent = __decorate([
         moduleId: module.id,
         selector: 'list',
         templateUrl: './list.component.html',
-        styles: [".sebm-google-map-container { height: 650px; }"]
+        styles: [".sebm-google-map-container { height: 500px; }"]
     }),
     __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
 ], ListComponent);
