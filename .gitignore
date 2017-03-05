@@ -3,8 +3,8 @@ target
 project
 .cache-tests
 project/.sbtserver
-/public/app/**/*.component.js
-/public/app/**/*.component.js.map
+/public/app/**/*js
+/public/app/**/*.map
 /.idea
 /.idea_modules
 /.classpath
