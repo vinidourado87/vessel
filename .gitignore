@@ -3,6 +3,9 @@ target
 project
 .cache-tests
 project/.sbtserver
+/public/app/**/*js
+/public/app/**/*.map
+/public/node_modules
 /.idea
 /.idea_modules
 /.classpath
