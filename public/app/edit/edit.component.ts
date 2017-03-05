@@ -1,8 +1,8 @@
 import { Component, Input, NgModule, NgZone, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { VesselComponent } from '../vessel/vessel.component';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { FormGroup, FormBuilder, Validators, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BrowserModule } from "@angular/platform-browser";
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 
@@ -27,14 +27,15 @@ export class EditComponent {
   public searchElementRef: ElementRef;
 
   constructor(http: Http, formBuilder: FormBuilder, router : Router, 
-    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {
+    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private route: ActivatedRoute) {
 
     this.http = http;
     this.myForm = formBuilder.group({
-        name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
-        width: [ '', Validators.compose([Validators.required]) ],
-        length: [ '', Validators.compose([Validators.required]) ],
-        draft: [ '', Validators.compose([Validators.required]) ]
+      id: [],
+      name: [ '', Validators.compose([Validators.required, Validators.minLength(4)]) ],
+      width: [ '', Validators.compose([Validators.required]) ],
+      length: [ '', Validators.compose([Validators.required]) ],
+      draft: [ '', Validators.compose([Validators.required]) ]
     });
     this.router = router;
   }
@@ -46,6 +47,7 @@ export class EditComponent {
     head.append('Content-type', 'application/json');
 
     var data = JSON.stringify({
+        id: this.vessel.id,
         name: this.vessel.name,
         width: parseFloat(this.vessel.width.toString()),
         length: parseFloat(this.vessel.length.toString()),
@@ -61,25 +63,19 @@ export class EditComponent {
     }, erro => console.log(erro));
   }
 
-  editVessel(id) {
-    let head = new Headers();
-    head.append('Content-type', 'application/json');
-
-    this.http.get('vessel/' + id, {headers: head})
-    .subscribe(vessels => {
-        console.log(vessels);
-    }, erro => console.log(erro));
-  }
-
   ngOnInit() {
     this.zoom = 10;
-    this.latitude = 53.35124159999999;
-    this.longitude = -6.260778899999991;
-    
     this.searchControl = new FormControl();
-    
-    this.setCurrentPosition();
-    
+
+    this.route.params.subscribe(params => {
+      var idParam = params['id'];
+      if (idParam) {
+        this.loadVessel(idParam);
+      } else {
+        this.setCurrentPosition();
+      }
+    });
+
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
@@ -94,7 +90,6 @@ export class EditComponent {
   
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
         });
       });
     });
@@ -105,8 +100,22 @@ export class EditComponent {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        this.zoom = 10;
       });
     }
+  }
+
+  private loadVessel(idParam){
+    let head = new Headers();
+    head.append('Content-type', 'application/json');
+
+    this.http.get('vessel/' + idParam, {headers: head})
+    .map((res: Response) => res.text())
+    .subscribe((vessel: Object) => {
+      this.vessel = new VesselComponent().fromJson(vessel);
+
+      this.latitude = this.vessel.latitude;
+      this.longitude = this.vessel.longitude;
+      this.zoom = 10;
+    }, erro => console.log(erro));
   }
 }

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var VesselComponent = (function () {
     function VesselComponent() {
+        this.id = 0;
     }
     VesselComponent.prototype.fromJson = function (json) {
         var parsedJson = JSON.parse(json);

@@ -18,17 +18,15 @@ var ListComponent = (function () {
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
         this.vessels = [];
-        http
-            .get('vessels')
+        http.get('vessels')
             .map(function (res) { return res.json(); })
             .subscribe(function (vessels) {
             _this.vessels = vessels;
-            console.log(vessels);
         }, function (erro) { return console.log(erro); });
     }
     ListComponent.prototype.ngOnInit = function () {
         this.zoom = 2;
-        this.latitude = 53.35124159999999;
+        this.latitude = 35.35124159999999;
         this.longitude = -6.260778899999991;
     };
     return ListComponent;
@@ -42,7 +40,7 @@ ListComponent = __decorate([
         moduleId: module.id,
         selector: 'list',
         templateUrl: './list.component.html',
-        styles: [".sebm-google-map-container { height: 600px; }"]
+        styles: [".sebm-google-map-container { height: 500px; }"]
     }),
     __metadata("design:paramtypes", [http_1.Http, core_2.MapsAPILoader, core_1.NgZone])
 ], ListComponent);
