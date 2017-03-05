@@ -16,9 +16,10 @@ var forms_1 = require("@angular/forms");
 var router_1 = require("@angular/router");
 var core_2 = require("angular2-google-maps/core");
 var EditComponent = (function () {
-    function EditComponent(http, formBuilder, router, mapsAPILoader, ngZone) {
+    function EditComponent(http, formBuilder, router, mapsAPILoader, ngZone, route) {
         this.mapsAPILoader = mapsAPILoader;
         this.ngZone = ngZone;
+        this.route = route;
         this.vessel = new vessel_component_1.VesselComponent();
         this.http = http;
         this.myForm = formBuilder.group({
@@ -36,6 +37,7 @@ var EditComponent = (function () {
         var head = new http_1.Headers();
         head.append('Content-type', 'application/json');
         var data = JSON.stringify({
+            id: this.vessel.id,
             name: this.vessel.name,
             width: parseFloat(this.vessel.width.toString()),
             length: parseFloat(this.vessel.length.toString()),
@@ -53,7 +55,15 @@ var EditComponent = (function () {
         var _this = this;
         this.zoom = 10;
         this.searchControl = new forms_1.FormControl();
-        this.setCurrentPosition();
+        this.route.params.subscribe(function (params) {
+            var idParam = params['id'];
+            if (idParam) {
+                _this.loadVessel(idParam);
+            }
+            else {
+                _this.setCurrentPosition();
+            }
+        });
         this.mapsAPILoader.load().then(function () {
             var autocomplete = new google.maps.places.Autocomplete(_this.searchElementRef.nativeElement, {
                 types: ["address"]
@@ -66,14 +76,9 @@ var EditComponent = (function () {
                     }
                     _this.latitude = place.geometry.location.lat();
                     _this.longitude = place.geometry.location.lng();
-                    _this.zoom = 12;
                 });
             });
         });
-        var idParam = this.router.parseUrl(this.router.url).queryParams["id"];
-        if (idParam) {
-            this.loadVessel(idParam);
-        }
     };
     EditComponent.prototype.setCurrentPosition = function () {
         var _this = this;
@@ -81,7 +86,6 @@ var EditComponent = (function () {
             navigator.geolocation.getCurrentPosition(function (position) {
                 _this.latitude = position.coords.latitude;
                 _this.longitude = position.coords.longitude;
-                _this.zoom = 10;
             });
         }
     };
@@ -93,6 +97,9 @@ var EditComponent = (function () {
             .map(function (res) { return res.text(); })
             .subscribe(function (vessel) {
             _this.vessel = new vessel_component_1.VesselComponent().fromJson(vessel);
+            _this.latitude = _this.vessel.latitude;
+            _this.longitude = _this.vessel.longitude;
+            _this.zoom = 10;
         }, function (erro) { return console.log(erro); });
     };
     return EditComponent;
@@ -109,7 +116,7 @@ EditComponent = __decorate([
         styles: [".sebm-google-map-container { height: 300px; }"]
     }),
     __metadata("design:paramtypes", [http_1.Http, forms_1.FormBuilder, router_1.Router,
-        core_2.MapsAPILoader, core_1.NgZone])
+        core_2.MapsAPILoader, core_1.NgZone, router_1.ActivatedRoute])
 ], EditComponent);
 exports.EditComponent = EditComponent;
 //# sourceMappingURL=edit.component.js.map

@@ -44,6 +44,6 @@ export class PanelComponent implements OnInit {
     }
 
     findVessel(idParam) {
-        this.router.navigate(['/vessel/edit/' + idParam]);
+        this.router.navigate(['/vessel/edit', idParam]);
     }
 }

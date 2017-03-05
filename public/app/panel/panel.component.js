@@ -35,7 +35,7 @@ var PanelComponent = (function () {
         }, function (erro) { return console.log(erro); });
     };
     PanelComponent.prototype.findVessel = function (idParam) {
-        this.router.navigate(['/vessel/edit/' + idParam]);
+        this.router.navigate(['/vessel/edit', idParam]);
     };
     return PanelComponent;
 }());
