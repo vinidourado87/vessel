@@ -23,7 +23,10 @@
     <div class="row">
         <panel *ngFor="let vessel of vessels | filterByName: text.value" id="{{vessel.id}}" 
                 title="{{vessel.name | uppercase}}" class="col-md-4">
-            <vessel name="{{vessel.name}}" latitude="{{vessel.latitude}}" longitude="{{vessel.longitude}}"></vessel>
+            <vessel name="{{vessel.name}}"
+                width="{{vessel.width}}"
+                length="{{vessel.length}}"
+                draft="{{vessel.draft}}"></vessel>
         </panel>
     </div>
 </div>
@@ -36,10 +39,8 @@
         [longitude]="vessel.longitude">
 
       <sebm-google-map-info-window>
-        <p>Name: {{vessel.name}}</p>
-        <p>Width: {{vessel.width}} (m)</p>
-        <p>Length: {{vessel.length}} (m)</p>
-        <p>Draft: {{vessel.draft}} (m)</p>
+        <p><b>Name</b>: {{vessel.name}}</p>
+        <p><b>Seen At</b>: {{vessel.updatedAt | date:'dd/MM/yyyy'}}</p>
       </sebm-google-map-info-window>
     </sebm-google-map-marker>
   </sebm-google-map>

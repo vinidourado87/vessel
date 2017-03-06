@@ -2,9 +2,10 @@ package models
 
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
+import java.sql.Date
 
 case class Vessel(id: Long = 0, name: String, width: Double, length: Double, draft: Double,
-    latitude: Double, longitude: Double)
+    latitude: Double, longitude: Double, updatedAt: Date = new Date(new java.util.Date().getTime))
 
 object Vessel {
 
@@ -28,6 +29,7 @@ object Vessel {
     (__ \ "length").write[Double] and
     (__ \ "draft").write[Double] and
     (__ \ "latitude").write[Double] and
-    (__ \ "longitude").write[Double]
+    (__ \ "longitude").write[Double] and
+    (__ \ "updatedAt").write[Date]
    )(unlift(Vessel.unapply))
 }

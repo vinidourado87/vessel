@@ -7,6 +7,7 @@ import slick.driver.JdbcProfile
 import models.Vessel
 
 import scala.concurrent.{ Future, ExecutionContext }
+import java.sql.Date
 
 @Singleton
 class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
@@ -25,8 +26,9 @@ class VesselRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
     def draft = column[Double]("draft")
     def latitude = column[Double]("latitude")
     def longitude = column[Double]("longitude")
+    def updatedAt = column[Date]("updated_at")
 
-    def * = (id, name, width, length, draft, latitude, longitude) <> ((Vessel.apply _).tupled, Vessel.unapply)
+    def * = (id, name, width, length, draft, latitude, longitude, updatedAt) <> ((Vessel.apply _).tupled, Vessel.unapply)
   }
   
   private val vessel = TableQuery[VesselTable]
