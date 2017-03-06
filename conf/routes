@@ -11,6 +11,8 @@ DELETE  /vessel/:id                                               controllers.Ve
 GET     /vessel/:id                                               controllers.VesselController.find(id: Long)
 PATCH   /vessel/:id/latitude/:latitude/longitude/:longitude       controllers.VesselController.relocate(id: Long, latitude: Double, longitude: Double)
 
+#All actions with vessels history
+GET     /vessel/:id/history										  controllers.VesselHistoryController.list(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /*file               controllers.Assets.versioned(path="/public", file: Asset)

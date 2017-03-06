@@ -6,6 +6,7 @@ create table "vessel" (
   "width" double not null,
   "length" double not null,
   "draft" double not null,
+  "updated_at" timestamp not null,
   "latitude" double,
   "longitude" double
 );
